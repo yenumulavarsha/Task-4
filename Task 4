@@ -1,0 +1,56 @@
+import random
+class RockPaperScissor():    #initializing the values
+    def __init__(self):
+        self.player_choice=""
+        self.computer_choice=""
+        self.player_score=0
+        self.computer_score=0
+        self.gesture_choices=("rock","paper","scissor")
+    def Comp_generator(self):              #generating the computer input(r,p,s)
+        return(random.choice(self.gesture_choices))
+
+    def play(self):        #caliculates the play of the computer and player until either gets 5 points 
+        print(""" Enter either "rock" , "paper" or "scissor" """ )    
+        print("first person to score 5 points win the match")
+        self.player_score=0
+        self.computer_score=0
+        while (self.player_score !=5 and self.computer_score !=5):
+            self.player_choice= str(input(":"))    #taking the input values from user 
+            self.computer_choice= self.Comp_generator()       #taking the computer input
+            print(self.computer_choice)
+            if (self.computer_choice == "rock" and self.player_choice == "paper"):
+                self.player_score +=1
+                print("player win", "player's score:",self.player_score,"computer's score:",self.computer_score)
+            elif (self.computer_choice == "rock" and self.player_choice == "scissor"):
+                self.computer_score +=1
+                print("computer win", "player's score:",self.player_score,"computer's score:",self.computer_score)
+            elif(self.computer_choice == "paper" and self.player_choice == "rock"):
+                self.computer_score +=1
+                print("computer win", "player's score:",self.player_score,"computer's score:",self.computer_score)
+            elif (self.computer_choice == "paper" and self.player_choice == "scissor"):
+                self.player_score +=1
+                print("player win", "player's score:",self.player_score,"computer's score:",self.computer_score)
+            elif (self.computer_choice == "scissor" and self.player_choice == "paper"):
+                self.computer_score +=1
+                print("computer win", "player's score:",self.player_score,"computer's score:",self.computer_score)
+            elif (self.computer_choice == "scissor" and self.player_choice == "rock"):
+                self.player_score +=1
+                print("player win", "player's score:",self.player_score,"computer's score:",self.computer_score)
+            else:
+                print("draw")
+                continue
+        if (self.player_score==5):    #declares the winner 
+            print("winner :player")
+        else:
+            print("winner : computer")
+        
+player=RockPaperScissor()       
+while True:            
+    play=str(input("""
+    y for yes
+    n for no
+    would you like to play Rock Paper Scissor:"""))
+    if (play=="y"):
+        player.play()
+    else:
+        continue
